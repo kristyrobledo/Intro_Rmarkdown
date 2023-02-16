@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Introduction to Rmarkdown</title>
+    <meta charset="utf-8" />
+    <script src="index_files/header-attrs-2.20/header-attrs.js"></script>
+    <link href="index_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="index_files/tabwid-1.1.2/tabwid.css" rel="stylesheet" />
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } },
+      });
+    </script>
+    <style>
+    .mjx-mrow a {
+      color: black;
+      pointer-events: none;
+      cursor: default;
+    }
+    </style>
+    <link rel="stylesheet" href="assets/sydney-fonts.css" type="text/css" />
+    <link rel="stylesheet" href="assets/sydney.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+class: title-slide
+background-image: url("assets/title-image2.jpg")
+background-position:  100% 50%
+background-size: 100% 100%
+
+# .text-shadow[.black[Introduction to Rmarkdown]]
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+### .text-shadow[.white[&lt;br&gt;&lt;br&gt;&lt;br&gt; &amp;nbsp;Dr Kristy Robledo &lt;br&gt; &lt;svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;fill:blue;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"&gt;&lt;/path&gt;&lt;/svg&gt; @kristyrobledo]]
+---
+
+# .brand-red[What can Rmarkdown do?]
+
+  .center[
+&lt;img src="assets/rmarkdown.jfif" height=500&gt;
+]
+
+
+.font60[
+Courtesy: Alison Horst [Artwork by @allison_horst](https://allisonhorst.com/) 
+]
+
+
+
+???
+
+
+---
+# **For example: A reproducibility receipt**
+
+.pull-left[
+You can write something like this in Rmarkdown:
+
+
+```r
+sessioninfo::package_info() %&gt;%
+  unclass() %&gt;%
+  as_tibble() %&gt;%
+  filter(attached==TRUE) %&gt;%
+  select(package, ondiskversion, date) %&gt;%
+  rename(version=ondiskversion) %&gt;%
+  flextable() %&gt;%
+  autofit()
+```
+
+And it will come out like this in the document:
+]
+
+--
+
+.pull-right[
+
+&lt;template id="f829a556-3576-402e-9575-f46473f74464"&gt;&lt;style&gt;
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  border-color: transparent;
+  caption-side: top;
+}
+.tabwid-caption-bottom table{
+  caption-side: bottom;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td, .tabwid th {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+.katex-display {
+    margin: 0 0 !important;
+}
+&lt;/style&gt;&lt;div class="tabwid"&gt;&lt;style&gt;.cl-02bd5b3c{}.cl-02b38daa{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-02b74f58{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 0.7;background-color:transparent;}.cl-02b77924{width:1.185in;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b77925{width:0.778in;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b77926{width:1.067in;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b77927{width:1.185in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b77928{width:0.778in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b77929{width:1.067in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b7792a{width:1.185in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b7792b{width:0.778in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b7792c{width:1.067in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b7792d{width:1.185in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b7792e{width:0.778in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b7a0c0{width:1.067in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b7a0c1{width:1.185in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b7a0c2{width:0.778in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b7a0c3{width:1.067in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b7a0c4{width:1.185in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b7a0c5{width:0.778in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b7a0c6{width:1.067in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b7a0c7{width:1.185in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b7a0c8{width:0.778in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b7a0c9{width:1.067in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b7a0ca{width:1.185in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b7c76c{width:0.778in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b7c76d{width:1.067in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b7c76e{width:1.185in;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b7c76f{width:0.778in;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-02b7c770{width:1.067in;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}&lt;/style&gt;&lt;table class='cl-02bd5b3c'&gt;&lt;caption&gt;&lt;span&gt;R packages used in analyses and reporting&lt;/span&gt;&lt;/caption&gt;&lt;thead&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;th class="cl-02b77924"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;package&lt;/span&gt;&lt;/p&gt;&lt;/th&gt;&lt;th class="cl-02b77925"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;version&lt;/span&gt;&lt;/p&gt;&lt;/th&gt;&lt;th class="cl-02b77926"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;date&lt;/span&gt;&lt;/p&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-02b77927"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;dplyr&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b77928"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;1.0.10&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b77929"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;2022-09-01&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-02b7792a"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;flextable&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b7792b"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;0.8.3&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b7792c"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;2022-11-06&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-02b7792a"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;forcats&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b7792b"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;0.5.2&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b7792c"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;2022-08-19&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-02b7792d"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;ggplot2&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b7792e"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;3.4.0&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b7a0c0"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;2022-11-04&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-02b7a0c1"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;icons&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b7a0c2"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;0.2.0&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b7a0c3"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;2022-09-08&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-02b7a0c4"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;patchwork&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b7a0c5"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;1.1.2&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b7a0c6"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;2022-08-19&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-02b7a0c7"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;purrr&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b7a0c8"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;0.3.5&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b7a0c9"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;2022-10-06&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-02b7a0c7"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;readr&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b7a0c8"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;2.1.3&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b7a0c9"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;2022-10-01&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-02b7a0c1"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;readxl&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b7a0c2"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;1.4.1&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b7a0c3"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;2022-08-17&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-02b7a0ca"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;RefManageR&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b7c76c"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;1.4.0&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b7c76d"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;2022-09-30&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-02b7792a"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;sessioninfo&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b7792b"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;1.2.2&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b7792c"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;2021-12-06&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-02b77927"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;stringr&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b77928"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;1.4.1&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b77929"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;2022-08-20&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-02b7a0c7"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;tibble&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b7a0c8"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;3.1.8&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b7a0c9"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;2022-07-22&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-02b77927"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;tidyr&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b77928"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;1.2.1&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b77929"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;2022-09-08&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-02b7c76e"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;tidyverse&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b7c76f"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;1.3.2&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-02b7c770"&gt;&lt;p class="cl-02b74f58"&gt;&lt;span class="cl-02b38daa"&gt;2022-07-18&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;/template&gt;
+&lt;div class="flextable-shadow-host" id="cd5fd107-8b74-49ec-8e9f-f8f493867766"&gt;&lt;/div&gt;
+&lt;script&gt;
+var dest = document.getElementById("cd5fd107-8b74-49ec-8e9f-f8f493867766");
+var template = document.getElementById("f829a556-3576-402e-9575-f46473f74464");
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+&lt;/script&gt;
+]
+---
+
+
+# .brand-red[What outputs can I create?]
+
+.pull-left[
+
+.content-box-yellow[
+
+Documents
+
+- PDF
+- html
+- **word**
+- books
+
++more
+
+Slides
+
+- html
+- powerpoint
+- beamer
+
+]
+]
+
+
+--
+
+.pull-right[
+ .content-box-red[
+
+Other
+
+- dashboards (flexdashboard)
+- notebooks
+- websites 
+- shiny apps
+
+]
+
+
+[See here for examples](https://rmarkdown.rstudio.com/gallery.html) 
+
+]
+
+
+???
+today we are going to focus on word outputs, specifically using the officedown package
+---
+
+# .brand-red[Today we are focusing on:]
+.pull-left[
+
+.content-box-yellow[
+
+- creating a word document
+- basic formatting in markdown
+- including code in report
+- including tables in report
+- including graphics in report
+- cross reference tables and figures
+- in line reporting
+
+]
+]
+
+--
+
+.pull-right[
+
+&lt;img src="assets/livetrouble.png" height=450 width=850&gt;
+
+
+.font60[
+Courtesy: Alison Horst [Artwork by @allison_horst](https://allisonhorst.com/) 
+]
+]
+
+???
+
+- officedown package
+- gtsummary package
+- tidyverse approach to code
+- tips and tricks along the way
+
+---
+class: sydney-blue
+
+# **Some tips with Word + Rmarkdown:**
+
+- knit regularly and check (esp figure size)
+
+--
+
+- use the code chunk option for table captions: 'tab.cap = "Insert table caption"'
+
+--
+
+- and code chunk option: 'tab.id="shortname"' with no symbols so you get "table 1"
+
+--
+
+- use global code chunk option "fig.cap = TRUE" to make sure Figure captions work
+
+--
+
+- if you are going to PDF it.... create a PDF document!
+- if you want some cool features like interactive graphs &amp; "sort-able" tables, try html!
+
+---
+# .brand-blue[**Resources:**]
+
+.font130[**Rmarkdown**] 
+
+- [Rmarkdown cheatsheet](https://www.rstudio.org/links/r_markdown_cheat_sheet)
+- [Rmarkdown reference](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
+- [Rmarkdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)
+
+--
+
+.font130[**gtsummary** @statistishdan] 
+
+- [gtsummary help with lots of examples](https://www.danieldsjoberg.com/gtsummary/)
+- [gtsummary presentation](http://www.danieldsjoberg.com/gtsummary-weill-cornell-presentation/#1)
+- super responsive on stackoverflow
+
+--
+
+.font130[**officedown** @DavidGohel] 
+
+- [Officedown for word](https://ardata-fr.github.io/officeverse/officedown-for-word.html)
+
+
+???
+
+
+---
+class: sydney-red
+background-image: url(assets/USydLogo-white.svg),url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
+background-size: 260px,100px
+background-position: 5% 95%,4% 70%
+
+# Thanks!
+
+.pull-right-2[
+.pull-up[
+ 
+]
+
+.pull-down[
+
+&lt;a href="mailto:kristy.robledo@sydney.edu.au"&gt;
+.white[&lt;svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M440 6.5L24 246.4c-34.4 19.9-31.1 70.8 5.7 85.9L144 379.6V464c0 46.4 59.2 65.5 86.6 28.6l43.8-59.1 111.9 46.2c5.9 2.4 12.1 3.6 18.3 3.6 8.2 0 16.3-2.1 23.6-6.2 12.8-7.2 21.6-20 23.9-34.5l59.4-387.2c6.1-40.1-36.9-68.8-71.5-48.9zM192 464v-64.6l36.6 15.1L192 464zm212.6-28.7l-153.8-63.5L391 169.5c10.7-15.5-9.5-33.5-23.7-21.2L155.8 332.6 48 288 464 48l-59.4 387.3z"&gt;&lt;/path&gt;&lt;/svg&gt; kristy.robledo@sydney.edu.au]
+&lt;/a&gt;
+
+&lt;a href="https://kristyrobledo.github.io/Intro_Rmarkdown/"&gt;
+.white[&lt;svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"&gt;&lt;/path&gt;&lt;/svg&gt; kristyrobledo.github.io/Intro_Rmarkdown/]
+&lt;/a&gt;
+
+&lt;a href="http://twitter.com/kristyrobledo"&gt;
+.white[&lt;svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"&gt;&lt;/path&gt;&lt;/svg&gt; @kristyrobledo]
+&lt;/a&gt;
+
+&lt;a href="http://github.com/kristyrobledo"&gt;
+.white[&lt;svg viewBox="0 0 496 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"&gt;&lt;/path&gt;&lt;/svg&gt; @kristyrobledo]
+&lt;/a&gt;
+
+]]
+
+???
+sharingan
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="assets/remark-zoom.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9",
+"navigation": {
+"scroll": false
+}
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
