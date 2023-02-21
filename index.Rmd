@@ -50,7 +50,22 @@ background-size: 100% 100%
 <br><br><br><br><br><br><br><br><br><br>
 ### .text-shadow[.white[<br><br><br> &nbsp;Dr Kristy Robledo <br> `r icon_style(fontawesome("twitter"), fill="blue")` @kristyrobledo]]
 ---
+class: center
 
+# .brand-red[RECAP: What can Stata do?]
+
+
+  .center[
+<img src="assets/recap.jfif" height=200>
+]
+<br>
+
+[Slides here](https://github.com/kristyrobledo/Intro_Rmarkdown/blob/main/STATA/ACTA%20STInG%20Stata%20Workshop_15022023_Anurika%20De%20Silva.pdf)
+
+
+[Code here](https://github.com/kristyrobledo/Intro_Rmarkdown/tree/main/STATA/Stata%20Programs)
+
+---
 # .brand-red[What can Rmarkdown do?]
 
   .center[
@@ -213,8 +228,15 @@ class: sydney-blue
 
 --
 
-- if you are going to PDF it.... create a PDF document!
+- "Clear knitr cache" is your friend, as is google and stackoverflow/github. 
+
+--
+
+- if you are going to PDF it.... create a PDF document! .fn[1]
 - if you want some cool features like interactive graphs & "sort-able" tables, try html!
+
+
+.footnote[[1] Will need latex or tinytex installed! [Instructions here](https://bookdown.org/yihui/rmarkdown-cookbook/install-latex.html)]
 
 ---
 # .brand-blue[**Resources:**]
