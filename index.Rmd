@@ -233,6 +233,9 @@ class: sydney-blue
 --
 
 - if you are going to PDF it.... create a PDF document! .fn[1]
+
+--
+
 - if you want some cool features like interactive graphs & "sort-able" tables, try html!
 
 
