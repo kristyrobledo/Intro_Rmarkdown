@@ -174,6 +174,72 @@ order list
 1. two 
 1. three
 
+\newpage
+
+# Extras post session
+
+## The 'template.docx' file
+
+I didn't get a chance to talk about this file, but it gives the template to your word document, eg. footers, headers, font styles etc. 
+Discussed in detail [here](https://bookdown.org/yihui/rmarkdown-cookbook/word-template.html). 
+
+## In line reporting
+
+```{r}
+## recreate the table one, but dont output it.
+SHIdat %>%
+  select(bras.f, sex.f, agerand, pathway.f, tt_Lnum) %>%
+  tbl_summary(by=bras.f, 
+              statistic = list(agerand ~ "{mean} ({sd})", 
+                               tt_Lnum ~ "{median} ({min}-{max})"),
+              label = list(agerand ~ "Age in years")) %>%
+  add_overall(last=TRUE)  ->t1
+
+##if you want to output it, do this:
+#t1 %>%
+#  as_flex_table()
+
+```
+
+
+There are a total of `r nrow(SHIdat)` participants enrolled in this trial. 
+The average age is `r mean(SHIdat$agerand, na.rm=TRUE)`. Obviously you would also want to round this number....
+
+Or we can use gtsummary helper "inline_text" function if you have saved the table. For example, the mean age is `r inline_text(t1, variable = agerand, column='stat_0')` years. 
+
+
+## Question: summary stats + model output
+
+There was a question about adding summary statistics to model tables. Very easily achieved with tbl_merge and/or tbl_stack. Check out [here](http://www.danieldsjoberg.com/gtsummary-weill-cornell-presentation/#31) onwards in one of Daniel's presentations. 
+
+```{r, tab.id = "mergetab", tab.cap="Summary table + Progression table example"}
+
+##summary table
+survdf %>%
+  mutate(progStatus=factor(progStatus, 
+                           labels = c("No progression", "Progression"))) %>% 
+                                      #label the levels as not done previously
+  tbl_cross( 
+    row = bras.f, 
+    col = progStatus, 
+    percent = "row",  ##make sure you have the correct percentages displayed
+    label = list(bras.f~"Treatment"),
+    margin = NULL ## this removes the row and column totals from table
+  )->summtab
+
+#model table
+coxph(Surv(days, progStatus) ~bras.f, data=survdf) %>%
+  tbl_regression(exponentiate = TRUE,
+                 label = list(bras.f~"Treatment")) ->modtab
+
+#merge two and print
+tbl_merge(tbls = list(summtab,modtab), 
+          tab_spanner = c("Summary statistics", "Unadjusted model")) %>%
+  as_flex_table() ##force it to flextable right before you print
+```
+
+
+\newpage
 
 # Reproducibility receipt
 
