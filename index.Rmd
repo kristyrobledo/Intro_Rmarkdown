@@ -83,7 +83,7 @@ Courtesy: Alison Horst [Artwork by @allison_horst](https://allisonhorst.com/)
 
 
 ---
-# **For example: A reproducibility receipt**
+# .brand-red[For example: A reproducibility receipt]
 
 .pull-left[
 You can write something like this in Rmarkdown:
